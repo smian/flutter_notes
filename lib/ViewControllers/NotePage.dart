@@ -147,7 +147,6 @@ class _NotePageState extends State<NotePage> {
   }
 
 
-
   List<Widget> _archiveAction(BuildContext context) {
     List<Widget> actions = [];
     if (widget.noteInEditing.id != -1) {
@@ -221,7 +220,7 @@ class _NotePageState extends State<NotePage> {
   void _persistData() {
     updateNoteObject();
 
-    if (_editableNote.content.isNotEmpty) {
+    if (_editableNote.title.isNotEmpty) {
       var noteDB = NotesDBHandler();
 
       if (_editableNote.id == -1) {
@@ -236,6 +235,7 @@ class _NotePageState extends State<NotePage> {
             _editableNote, false); // for updating the existing note
       }
     }
+
   }
 
 // this function will ne used to save the updated editing value of the note to the local variables as user types

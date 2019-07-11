@@ -107,6 +107,20 @@ class NotesDBHandler {
     return true;
   }
 
+  Future<int> getNoteCount() async {
+    final Database db = await database;
+    int count = 0;
+    try {
+      List<Map> list = await db.rawQuery('SELECT * FROM notes');
+      count = list.length;
+      print("NoteCount=$count");
+    } catch(Error) {
+      print(Error);
+      return -1;
+    }
+    return count;
+  }
+
 
   Future<bool> archiveNote(Note note) async {
     if (note.id != -1) {
